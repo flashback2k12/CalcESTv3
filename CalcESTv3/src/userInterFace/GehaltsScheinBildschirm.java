@@ -1,0 +1,54 @@
+package userInterFace;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class GehaltsScheinBildschirm extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4426663069390240749L;
+	private JPanel contentPane;
+
+	
+	/**
+	 * Create the frame.
+	 */
+	public GehaltsScheinBildschirm() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 400);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnWeiter = new JButton("weiter");
+		btnWeiter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
+		btnWeiter.setBounds(10, 328, 89, 23);
+		contentPane.add(btnWeiter);
+		
+		JButton btnZurueck = new JButton("zurueck");
+		btnZurueck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AdressBildschirm ab = new AdressBildschirm();
+				ab.setVisible(true); 
+								
+			}
+		});
+		btnZurueck.setBounds(335, 328, 89, 23);
+		contentPane.add(btnZurueck);
+	}
+
+}

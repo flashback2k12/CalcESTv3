@@ -1,0 +1,8 @@
+package globalVar;
+
+public class DataGehalt {
+
+	public static DataGehalt dataGehalt = new DataGehalt(); 
+	
+	
+}

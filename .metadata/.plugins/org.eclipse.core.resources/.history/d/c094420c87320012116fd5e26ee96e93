@@ -1,0 +1,16 @@
+package globalVar;
+
+public class DataGehalt {
+
+	public static DataGehalt dataGehalt = new DataGehalt(); 
+	
+	private double BruttoLohnMonat;
+	private double KVMonat;
+	private double PVMonat;
+	private double AVMonat;
+	private double RVMonat;
+	private double LohnSteuerMonat;
+	private double SoliMonat;
+	
+	
+}
