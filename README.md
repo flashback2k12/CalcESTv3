@@ -1,1 +1,1 @@
-initiale release
+Das Programm ist an ledige, kinderlose Gehaltsempfänger gerichtet, welche am Anfang des Jahres schon wissen wollen welche Einkommensteuer-Erstattung zu erwarten sein koennte, um diese sofort zu reinvestieren bzw. um rechtzeitig Massnahmen zu ergreifen, damit mit einer Steuererstattung zu rechnen sein koennte. :-)
