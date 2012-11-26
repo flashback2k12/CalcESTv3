@@ -2,6 +2,7 @@ package userInterFace;
 
 import globalVar.AdresseAG;
 import globalVar.AdresseAN;
+import globalVar.DataWK;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -31,13 +32,14 @@ public class AdressBildschirm extends JFrame {
 	private JTextField txtStrasseAG;
 	private JTextField txtPlzAG;
 	private JTextField txtArbeitsort;
+	private JTextField txtEntfernungWA;
 
 	/**
 	 * Create the frame.
 	 */
 	public AdressBildschirm() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 400);
+		setBounds(100, 100, 450, 424);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -157,6 +159,11 @@ public class AdressBildschirm extends JFrame {
 				AdresseAG.adresseAG.setArbeitsort(txtArbeitsort.getText());
 				
 				/*
+				 * Uebergabe der Entfernung Wohnung / Arbeit in die Globale Klasse BerechnungWK.java
+				 */
+				DataWK.dataWK.setEntfernungWA(Double.parseDouble(txtEntfernungWA.getText()));
+				
+				/*
 				 * Oeffnung des naechsten userInterfaces
 				 */
 				GehaltsScheinBildschirm gsb = new GehaltsScheinBildschirm();
@@ -164,7 +171,7 @@ public class AdressBildschirm extends JFrame {
 				
 			}
 		});
-		btnWeiter.setBounds(10, 328, 90, 23);
+		btnWeiter.setBounds(10, 362, 90, 23);
 		contentPane.add(btnWeiter);
 		
 		JButton btnTest = new JButton("Entfernung berechnen");
@@ -172,14 +179,23 @@ public class AdressBildschirm extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				/*
-				 * Oeffnung der Google Maps Web Page durch Button click
+				 * Oeffnung der Google Maps Web Page durch Button click zur Berechnung der Entfernungskilometer
 				 */
 				
 				openURL("http://maps.google.de/maps?hl=de&tab=wl");
 			}
 		});
-		btnTest.setBounds(132, 328, 239, 23);
+		btnTest.setBounds(132, 362, 239, 23);
 		contentPane.add(btnTest);
+		
+		JLabel lblEntfernung = new JLabel("Entfernung:");
+		lblEntfernung.setBounds(10, 311, 103, 15);
+		contentPane.add(lblEntfernung);
+		
+		txtEntfernungWA = new JTextField();
+		txtEntfernungWA.setColumns(10);
+		txtEntfernungWA.setBounds(132, 309, 239, 20);
+		contentPane.add(txtEntfernungWA);
 	}
 
 
@@ -213,5 +229,4 @@ public class AdressBildschirm extends JFrame {
 		JOptionPane.showMessageDialog(null, "Error in opening browser" + ":\n" + e.getLocalizedMessage());
 		}
 	}
-	
 }

@@ -1,5 +1,7 @@
 package userInterFace;
 
+import globalVar.DataWK;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -32,6 +34,7 @@ public class StartBildschirmV2 extends JFrame {
 	int BUTTONARBEITSTAGE = 0;
 	int BUTTONSPENDEN = 0;
 	int BUTTONKRANKHEITSKOSTEN = 0;
+	int BUTTONWERBUNGSKOSTEN = 0;
 	
 
 	/**
@@ -64,7 +67,7 @@ public class StartBildschirmV2 extends JFrame {
 		JLabel lblBerechnungDerEinkommensteuer = new JLabel("Berechnung der Einkommensteuer");
 		lblBerechnungDerEinkommensteuer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblBerechnungDerEinkommensteuer.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBerechnungDerEinkommensteuer.setBounds(100, 32, 246, 19);
+		lblBerechnungDerEinkommensteuer.setBounds(100, 32, 272, 18);
 		contentPane.add(lblBerechnungDerEinkommensteuer);
 		
 		JRadioButton rdbtnGehaltsschein = new JRadioButton("Gehaltsschein");
@@ -86,7 +89,7 @@ public class StartBildschirmV2 extends JFrame {
 				
 			}
 		});
-		rdbtnKilometerZurArbeit.setBounds(6, 130, 160, 23);
+		rdbtnKilometerZurArbeit.setBounds(6, 130, 272, 23);
 		contentPane.add(rdbtnKilometerZurArbeit);
 		
 		JRadioButton rdbtnArbeitsTage = new JRadioButton("Arbeitstage");
@@ -97,12 +100,12 @@ public class StartBildschirmV2 extends JFrame {
 				
 			}
 		});
-		rdbtnArbeitsTage.setBounds(6, 160, 160, 23);
+		rdbtnArbeitsTage.setBounds(6, 160, 272, 23);
 		contentPane.add(rdbtnArbeitsTage);
 		
 		JLabel lblBentigteUnterlagen = new JLabel("ben\u00F6tigte Unterlagen / Angaben: ");
 		lblBentigteUnterlagen.setFont(lblBentigteUnterlagen.getFont().deriveFont(lblBentigteUnterlagen.getFont().getStyle() | Font.BOLD));
-		lblBentigteUnterlagen.setBounds(10, 80, 215, 14);
+		lblBentigteUnterlagen.setBounds(10, 80, 281, 14);
 		contentPane.add(lblBentigteUnterlagen);
 		
 		JLabel lblOptinal = new JLabel("optinal:");
@@ -115,6 +118,7 @@ public class StartBildschirmV2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				BUTTONSPENDEN = 1;
+				DataWK.dataWK.setClickSpenden(BUTTONSPENDEN); 
 				
 			}
 		});
@@ -126,17 +130,31 @@ public class StartBildschirmV2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				BUTTONKRANKHEITSKOSTEN = 1;
+				DataWK.dataWK.setClickKrankheitsKosten(BUTTONKRANKHEITSKOSTEN);
 				
 			}
 		});
-		rdbtnKrankheitsKosten.setBounds(10, 250, 160, 23);
+		rdbtnKrankheitsKosten.setBounds(10, 250, 272, 23);
 		contentPane.add(rdbtnKrankheitsKosten);
 		
+		JRadioButton rdbtnWerbungskosten = new JRadioButton("Werbungskosten");
+		rdbtnWerbungskosten.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				BUTTONWERBUNGSKOSTEN = 1;
+				DataWK.dataWK.setClickWerbungsKosten(BUTTONWERBUNGSKOSTEN); 
+				
+			}
+		});
+		rdbtnWerbungskosten.setBounds(10, 280, 149, 23);
+		contentPane.add(rdbtnWerbungskosten);
+		
+			
 		JButton btnWeiter = new JButton("weiter");
 		btnWeiter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if ((BUTTONGEHALTSSCHEIN == 1) & (BUTTONKILOMETERARBEIT == 1) & (BUTTONARBEITSTAGE == 1) & (BUTTONSPENDEN == 1) & (BUTTONKRANKHEITSKOSTEN == 1)) 
+				if ((BUTTONGEHALTSSCHEIN == 1) & (BUTTONKILOMETERARBEIT == 1) & (BUTTONARBEITSTAGE == 1) & (BUTTONSPENDEN == 1) & (BUTTONKRANKHEITSKOSTEN == 1) & (BUTTONWERBUNGSKOSTEN == 1)) 
 				{
 					AdressBildschirm ab = new AdressBildschirm();
 					ab.setVisible(true);
@@ -155,5 +173,7 @@ public class StartBildschirmV2 extends JFrame {
 		});
 		btnWeiter.setBounds(10, 328, 89, 23);
 		contentPane.add(btnWeiter);
+		
+		
 	}
 }
