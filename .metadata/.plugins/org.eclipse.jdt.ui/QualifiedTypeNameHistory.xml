@@ -13,4 +13,10 @@
 <fullyQualifiedTypeName name="userInterFace.GehaltsScheinBildschirm"/>
 <fullyQualifiedTypeName name="globalVar.DataGehalt"/>
 <fullyQualifiedTypeName name="userInterFace.AdressBildschirm"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="globalVar.DataWK"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="berechnungen.Berechne"/>
+<fullyQualifiedTypeName name="globalVar.JahresWerte"/>
+<fullyQualifiedTypeName name="outputFrame.Berechnung"/>
 </qualifiedTypeNameHistroy>

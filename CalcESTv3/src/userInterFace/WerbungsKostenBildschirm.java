@@ -25,6 +25,8 @@ public class WerbungsKostenBildschirm extends JFrame {
 	private JTextField txtArbeitsTage;
 	private JTextField txtSpendenGezahlt;
 	private JTextField txtKrankheitsKosten;
+	private JTextField txtArbeitsMittel;
+	private JTextField txtTelefonKosten;
 
 	
 	/**
@@ -43,21 +45,19 @@ public class WerbungsKostenBildschirm extends JFrame {
 		lblAngabenZuWerbungskosten.setBounds(12, 22, 249, 15);
 		contentPane.add(lblAngabenZuWerbungskosten);
 		
-		final JLabel lblEntfernungskilometer = new JLabel("Entfernungskilometer: ");
-		lblEntfernungskilometer.setBounds(12, 49, 279, 15);
-		contentPane.add(lblEntfernungskilometer);
-		
 		
 		JButton btnWeiter = new JButton("weiter");
 		btnWeiter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				/*
-				 * Uebergabe Daten für Werbungskosten in Global Klasse DataWK.java
+				 * Uebergabe Daten fuer Werbungskosten in Global Klasse DataWK.java
 				 */
 				DataWK.dataWK.setArbeitstage(Integer.parseInt(txtArbeitsTage.getText()));
 				DataWK.dataWK.setSpendenGezahlt(Double.parseDouble(txtSpendenGezahlt.getText()));
 				DataWK.dataWK.setKrankheitsKosten(Double.parseDouble(txtKrankheitsKosten.getText()));
+				DataWK.dataWK.setArbeitsMittel(Double.parseDouble(txtArbeitsMittel.getText())); 
+				DataWK.dataWK.setTelefonKosten(Double.parseDouble(txtTelefonKosten.getText()));
 								
 				/*
 				 * Oeffnung der AuswertungsGUI
@@ -67,7 +67,7 @@ public class WerbungsKostenBildschirm extends JFrame {
 				
 			}
 		});
-		btnWeiter.setBounds(12, 376, 117, 25);
+		btnWeiter.setBounds(12, 366, 117, 25);
 		contentPane.add(btnWeiter);
 		
 		JButton btnZurueck = new JButton("zurueck");
@@ -82,49 +82,53 @@ public class WerbungsKostenBildschirm extends JFrame {
 				
 			}
 		});
-		btnZurueck.setBounds(317, 376, 117, 25);
+		btnZurueck.setBounds(307, 366, 117, 25);
 		contentPane.add(btnZurueck);
 		
-		JButton btnClickMe = new JButton("Click");
-		btnClickMe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				/*
-				 * EntfernungsKilometer aus DataWK.java holen
-				 */
-				lblEntfernungskilometer.setText("Entfernungskilometer: " + DataWK.dataWK.getEntfernungWA());
-				
-			}
-		});
-		btnClickMe.setBounds(359, 44, 75, 25);
-		contentPane.add(btnClickMe);
-		
 		JLabel lblArbeitstage = new JLabel("Arbeitstage:");
-		lblArbeitstage.setBounds(12, 103, 167, 15);
+		lblArbeitstage.setBounds(12, 48, 167, 15);
 		contentPane.add(lblArbeitstage);
 		
 		JLabel lblSpenden = new JLabel("Spenden:");
-		lblSpenden.setBounds(12, 132, 167, 15);
+		lblSpenden.setBounds(12, 74, 167, 15);
 		contentPane.add(lblSpenden);
 		
 		JLabel lblKrankheitskosten = new JLabel("Krankheitskosten:");
-		lblKrankheitskosten.setBounds(12, 159, 167, 15);
+		lblKrankheitskosten.setBounds(12, 100, 167, 15);
 		contentPane.add(lblKrankheitskosten);
 		
 		txtArbeitsTage = new JTextField();
-		txtArbeitsTage.setBounds(197, 101, 177, 19);
+		txtArbeitsTage.setBounds(197, 45, 177, 19);
 		contentPane.add(txtArbeitsTage);
 		txtArbeitsTage.setColumns(10);
 		
 		txtSpendenGezahlt = new JTextField();
 		txtSpendenGezahlt.setColumns(10);
-		txtSpendenGezahlt.setBounds(197, 130, 177, 19);
+		txtSpendenGezahlt.setBounds(197, 71, 177, 19);
 		contentPane.add(txtSpendenGezahlt);
 		
 		txtKrankheitsKosten = new JTextField();
 		txtKrankheitsKosten.setColumns(10);
-		txtKrankheitsKosten.setBounds(197, 157, 177, 19);
+		txtKrankheitsKosten.setBounds(197, 97, 177, 19);
 		contentPane.add(txtKrankheitsKosten);
+		
+		JLabel lblArbeitsmittel = new JLabel("Arbeitsmittel:");
+		lblArbeitsmittel.setBounds(12, 126, 167, 14);
+		contentPane.add(lblArbeitsmittel);
+		
+		txtArbeitsMittel = new JTextField();
+		txtArbeitsMittel.setColumns(10);
+		txtArbeitsMittel.setBounds(197, 123, 177, 19);
+		contentPane.add(txtArbeitsMittel);
+		
+		JLabel lblTelefonkosten = new JLabel("Telefonkosten:");
+		lblTelefonkosten.setBounds(12, 151, 167, 14);
+		contentPane.add(lblTelefonkosten);
+		
+		txtTelefonKosten = new JTextField();
+		txtTelefonKosten.setColumns(10);
+		txtTelefonKosten.setBounds(197, 148, 177, 19);
+		contentPane.add(txtTelefonKosten);
 		
 		
 		

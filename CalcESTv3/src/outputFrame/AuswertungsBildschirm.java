@@ -6,6 +6,7 @@ import globalVar.DataGehalt;
 import globalVar.DataWK;
 import globalVar.JahresWerte;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,13 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import berechnungen.JahresWerteBerechnen;
-import berechnungen.WerbungsKosten;
-
-import java.awt.Font;
-import javax.swing.SwingConstants;
+import berechnungen.Berechne;
 
 public class AuswertungsBildschirm extends JFrame {
 
@@ -175,7 +173,7 @@ public class AuswertungsBildschirm extends JFrame {
 				 */
 				
 				try {
-					double JahresBruttoLohn = JahresWerteBerechnen.multi(BruttoLohnMonat, ArbeitsMonate);
+					double JahresBruttoLohn = Berechne.JahresWert(BruttoLohnMonat, ArbeitsMonate);
 					lblJahresBruttoLohn.setText("JahresBruttoLohn: " + JahresBruttoLohn);
 					JahresWerte.jahresWerte.setJahresBruttoLohn(JahresBruttoLohn); 
 				} catch (Exception e2) {
@@ -183,7 +181,7 @@ public class AuswertungsBildschirm extends JFrame {
 				}
 				
 				try {
-					double JahresLohnSteuer = JahresWerteBerechnen.multi(LohnSteuerMonat, ArbeitsMonate);
+					double JahresLohnSteuer = Berechne.JahresWert(LohnSteuerMonat, ArbeitsMonate);
 					lblJahresLohnSteuer.setText("JahresLohnSteuer: " + JahresLohnSteuer);
 					JahresWerte.jahresWerte.setJahresLohnSteuer(JahresLohnSteuer);
 				} catch (Exception e2) {
@@ -191,7 +189,7 @@ public class AuswertungsBildschirm extends JFrame {
 				}
 				
 				try {
-					double JahresSolZ = JahresWerteBerechnen.multi(SolZMonat, ArbeitsMonate);
+					double JahresSolZ = Berechne.JahresWert(SolZMonat, ArbeitsMonate);
 					lblJahresSolZ.setText("JahresSoliZuschlag: " + JahresSolZ);
 					JahresWerte.jahresWerte.setJahresSolZ(JahresSolZ);
 				} catch (Exception e2) {
@@ -199,7 +197,7 @@ public class AuswertungsBildschirm extends JFrame {
 				}
 				
 				try {
-					double JahresKv = JahresWerteBerechnen.multi(KvMonat, ArbeitsMonate);
+					double JahresKv = Berechne.JahresWert(KvMonat, ArbeitsMonate);
 					lblJahresKv.setText("JahresKV: " + JahresKv);
 					JahresWerte.jahresWerte.setJahresKv(JahresKv);
 				} catch (Exception e2) {
@@ -207,7 +205,7 @@ public class AuswertungsBildschirm extends JFrame {
 				}
 				
 				try {
-					double JahresPv = JahresWerteBerechnen.multi(PvMonat, ArbeitsMonate);
+					double JahresPv = Berechne.JahresWert(PvMonat, ArbeitsMonate);
 					lblJahresPv.setText("JahresPV: " + JahresPv);
 					JahresWerte.jahresWerte.setJahresPv(JahresPv);
 				} catch (Exception e2) {
@@ -215,7 +213,7 @@ public class AuswertungsBildschirm extends JFrame {
 				}
 				
 				try {
-					double JahresAv = JahresWerteBerechnen.multi(AvMonat, ArbeitsMonate);
+					double JahresAv = Berechne.JahresWert(AvMonat, ArbeitsMonate);
 					lblJahresAv.setText("JahresAV: " + JahresAv);
 					JahresWerte.jahresWerte.setJahresAv(JahresAv);
 				} catch (Exception e2) {
@@ -223,7 +221,7 @@ public class AuswertungsBildschirm extends JFrame {
 				}
 				
 				try {
-					double JahresRv = JahresWerteBerechnen.multi(RvMonat, ArbeitsMonate);
+					double JahresRv = Berechne.JahresWert(RvMonat, ArbeitsMonate);
 					lblJahresRv.setText("JahresRV: " + JahresRv);
 					JahresWerte.jahresWerte.setJahresRv(JahresRv);
 				} catch (Exception e2) {
@@ -235,11 +233,37 @@ public class AuswertungsBildschirm extends JFrame {
 				 */
 				double EntfernungWA = DataWK.dataWK.getEntfernungWA();
 				double ArbeitsTage = DataWK.dataWK.getArbeitstage();
+				double ArbeitsMittel = DataWK.dataWK.getArbeitsMittel();
+				double TelefonKosten = DataWK.dataWK.getTelefonKosten(); 
+				
+				/*
+				 * Vergleichabfrage fuer pauschale Arbeitsmittel --> nicht Anerkennung von Finanzamt moeglich
+				 */
+				if(ArbeitsMittel <= 110)
+				{
+					ArbeitsMittel = 110.0;
+				}
+				else
+				{
+					ArbeitsMittel = ArbeitsMittel; 
+				}
+				
+				/*
+				 * Vergleichabfrage fuer pauschale Telefonkosten --> nicht Anerkennung von Finanzamt moeglich
+				 */
+				if(TelefonKosten <= 240)
+				{
+					TelefonKosten = 240.0;
+				}
+				else
+				{
+					TelefonKosten = TelefonKosten; 
+				}				
 				
 				/*
 				 * Berechnung Werbungskosten
 				 */
-				double WerbungskostenAbz = WerbungsKosten.berechnenWK(EntfernungWA, ArbeitsTage);
+				double WerbungskostenAbz = Berechne.WerbungsKosten(EntfernungWA, ArbeitsTage, ArbeitsMittel, TelefonKosten);
 				
 				/*
 				 * Vergleich Pauschale <-> tatsaechliche WK
@@ -256,9 +280,14 @@ public class AuswertungsBildschirm extends JFrame {
 					JahresWerte.jahresWerte.setWerbungsKosten(WerbungskostenAbz); 
 				}
 				
+				/*
+				 * Berechnung Summe der Einkuenfte + gleichzeitige Uebergabe in globale klasse + gleichzeitige Werte uebernahme aus globaler klasse
+				 */
+				JahresWerte.jahresWerte.setSummeEinkunft(Berechne.SummeEinkunft(JahresWerte.jahresWerte.getJahresBruttoLohn(), JahresWerte.jahresWerte.getWerbungsKosten())); 
+								
 			}
 		});
-		btnAuswertung.setBounds(10, 376, 146, 23);
+		btnAuswertung.setBounds(10, 366, 146, 23);
 		contentPane.add(btnAuswertung);
 		
 		JButton btnDatenSammlung = new JButton("Daten Sammlung");
@@ -273,7 +302,7 @@ public class AuswertungsBildschirm extends JFrame {
 				
 			}
 		});
-		btnDatenSammlung.setBounds(317, 375, 154, 25);
+		btnDatenSammlung.setBounds(466, 365, 154, 25);
 		contentPane.add(btnDatenSammlung);
 		
 		JLabel lblAngabenZumArbeitgeber = new JLabel("Angaben zum Arbeitgeber:");
@@ -292,7 +321,18 @@ public class AuswertungsBildschirm extends JFrame {
 		lblKrankheitskosten.setBounds(302, 289, 244, 15);
 		contentPane.add(lblKrankheitskosten);
 		
+		JButton btnBerechnung = new JButton("Berechnung");
+		btnBerechnung.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Berechnung b = new Berechnung();
+				b.setVisible(true);
+				
+			}
+		});
+		btnBerechnung.setBounds(236, 366, 146, 23);
+		contentPane.add(btnBerechnung);
+		
 				
 	}
-
 }

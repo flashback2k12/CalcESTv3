@@ -13,6 +13,8 @@ public class DataWK {
 	private int Arbeitstage;
 	private double SpendenGezahlt;
 	private double KrankheitsKosten;
+	private double ArbeitsMittel;
+	private double TelefonKosten;
 	
 
 	public double getEntfernungWA() {
@@ -69,6 +71,22 @@ public class DataWK {
 
 	public void setKrankheitsKosten(double krankheitsKosten) {
 		KrankheitsKosten = krankheitsKosten;
+	}
+
+	public double getArbeitsMittel() {
+		return ArbeitsMittel;
+	}
+
+	public void setArbeitsMittel(double arbeitsMittel) {
+		ArbeitsMittel = arbeitsMittel;
+	}
+
+	public double getTelefonKosten() {
+		return TelefonKosten;
+	}
+
+	public void setTelefonKosten(double telefonKosten) {
+		TelefonKosten = telefonKosten;
 	}
 
 		

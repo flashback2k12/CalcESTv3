@@ -12,6 +12,7 @@ public class JahresWerte {
 	private double JahresAv;
 	private double JahresRv;
 	private double WerbungsKosten; 
+	private double SummeEinkunft;
 	
 
 	public double getJahresBruttoLohn() {
@@ -76,6 +77,14 @@ public class JahresWerte {
 
 	public void setWerbungsKosten(double werbungsKosten) {
 		WerbungsKosten = werbungsKosten;
+	}
+
+	public double getSummeEinkunft() {
+		return SummeEinkunft;
+	}
+
+	public void setSummeEinkunft(double summeEinkunft) {
+		SummeEinkunft = summeEinkunft;
 	}
 	
 }

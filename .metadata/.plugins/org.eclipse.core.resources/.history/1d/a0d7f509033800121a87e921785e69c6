@@ -1,0 +1,13 @@
+package berechnungen;
+
+public class Berechne {
+
+	
+	public static double JahresWert (double monatsWert, double arbeitsMonate) {
+		
+		double jahresWert = monatsWert * arbeitsMonate;
+		
+		return Math.round(jahresWert*100.00)/100.00; 
+	}
+	
+}
