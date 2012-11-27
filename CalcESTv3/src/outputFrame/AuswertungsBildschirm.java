@@ -235,51 +235,17 @@ public class AuswertungsBildschirm extends JFrame {
 				double ArbeitsTage = DataWK.dataWK.getArbeitstage();
 				double ArbeitsMittel = DataWK.dataWK.getArbeitsMittel();
 				double TelefonKosten = DataWK.dataWK.getTelefonKosten(); 
-				
-				/*
-				 * Vergleichabfrage fuer pauschale Arbeitsmittel --> nicht Anerkennung von Finanzamt moeglich
-				 */
-				if(ArbeitsMittel <= 110)
-				{
-					ArbeitsMittel = 110.0;
-				}
-				else
-				{
-					ArbeitsMittel = ArbeitsMittel; 
-				}
-				
-				/*
-				 * Vergleichabfrage fuer pauschale Telefonkosten --> nicht Anerkennung von Finanzamt moeglich
-				 */
-				if(TelefonKosten <= 240)
-				{
-					TelefonKosten = 240.0;
-				}
-				else
-				{
-					TelefonKosten = TelefonKosten; 
-				}				
-				
+								
 				/*
 				 * Berechnung Werbungskosten
 				 */
-				double WerbungskostenAbz = Berechne.WerbungsKosten(EntfernungWA, ArbeitsTage, ArbeitsMittel, TelefonKosten);
+				lblWerbungsKosten.setText("" + Berechne.WerbungsKosten(EntfernungWA, ArbeitsTage, ArbeitsMittel, TelefonKosten));
 				
 				/*
-				 * Vergleich Pauschale <-> tatsaechliche WK
+				 * Uebergabe Werbungskosten in globale Klasse
 				 */
-				
-				if (WerbungskostenAbz <= 1000) 
-				{
-					lblWerbungsKosten.setText("Werbungskosten: " + 1000);
-					JahresWerte.jahresWerte.setWerbungsKosten(WerbungskostenAbz);
-				}
-				else 
-				{
-					lblWerbungsKosten.setText("Werbungskosten: " + WerbungskostenAbz);
-					JahresWerte.jahresWerte.setWerbungsKosten(WerbungskostenAbz); 
-				}
-				
+				JahresWerte.jahresWerte.setWerbungsKosten(Berechne.WerbungsKosten(EntfernungWA, ArbeitsTage, ArbeitsMittel, TelefonKosten));
+					
 				/*
 				 * Berechnung Summe der Einkuenfte + gleichzeitige Uebergabe in globale klasse + gleichzeitige Werte uebernahme aus globaler klasse
 				 */

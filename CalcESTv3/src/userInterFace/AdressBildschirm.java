@@ -143,25 +143,82 @@ public class AdressBildschirm extends JFrame {
 				/*
 				 * Uebergabe der AdressDaten fuer Arbeitnehmer in die Globale Klasse AdresseAN.java
 				 */
+				try {
+					String Vorname = txtVorname.getText();
+					AdresseAN.adresseAN.setVorname(Vorname); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Vorname muss aus Buchstaben bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 				
-				AdresseAN.adresseAN.setVorname(txtVorname.getText()); 
-				AdresseAN.adresseAN.setNachname(txtNachname.getText());
-				AdresseAN.adresseAN.setStrasse(txtStrasseAN.getText());
-				AdresseAN.adresseAN.setPlz(txtPlzAN.getText());
-				AdresseAN.adresseAN.setWohnort(txtWohnort.getText());
+				try {
+					String Nachname = txtNachname.getText();
+					AdresseAN.adresseAN.setNachname(Nachname); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Nachname muss aus Buchstaben bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				try {
+					String StrasseAN = txtStrasseAN.getText();
+					AdresseAN.adresseAN.setStrasse(StrasseAN); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "StrasseAN muss aus Buchstaben bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				try {
+					String PlzAN = txtPlzAN.getText();
+					AdresseAN.adresseAN.setPlz(PlzAN); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "PlzAN muss aus Zahlen bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				try {
+					String Wohnort = txtWohnort.getText();
+					AdresseAN.adresseAN.setWohnort(Wohnort); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Wohnort muss aus Buchstaben bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 				
 				/*
 				 * Uebergabe der AdressDaten fuer Arbeitgeber in die Globale Klasse AdresseAG.java
 				 */
-				AdresseAG.adresseAG.setNameArbeit(txtNameArbeit.getText());
-				AdresseAG.adresseAG.setStrasseAG(txtStrasseAG.getText());
-				AdresseAG.adresseAG.setPlzAG(txtPlzAG.getText());
-				AdresseAG.adresseAG.setArbeitsort(txtArbeitsort.getText());
+				try {
+					String NameArbeit = txtNameArbeit.getText();
+					AdresseAG.adresseAG.setNameArbeit(NameArbeit); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "ArbeitgeberName muss aus Buchstaben bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				try {
+					String StrasseAG = txtStrasseAG.getText();
+					AdresseAG.adresseAG.setStrasseAG(StrasseAG); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "StrasseAG muss aus Buchstaben bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				try {
+					String PlzAG = txtPlzAG.getText();
+					AdresseAG.adresseAG.setPlzAG(PlzAG); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "PlzAG muss aus Zahlen bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				try {
+					String Arbeitsort = txtArbeitsort.getText();
+					AdresseAG.adresseAG.setArbeitsort(Arbeitsort); 
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Arbeitsort muss aus Buchstaben bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 				
 				/*
 				 * Uebergabe der Entfernung Wohnung / Arbeit in die Globale Klasse BerechnungWK.java
 				 */
-				DataWK.dataWK.setEntfernungWA(Double.parseDouble(txtEntfernungWA.getText()));
+				try {
+					double EntfernungWA = Double.parseDouble(txtEntfernungWA.getText());
+					DataWK.dataWK.setEntfernungWA(EntfernungWA);
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "EntfernungWA muss aus Zahlen bestehen", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
 				
 				/*
 				 * Oeffnung des naechsten userInterfaces
@@ -181,7 +238,6 @@ public class AdressBildschirm extends JFrame {
 				/*
 				 * Oeffnung der Google Maps Web Page durch Button click zur Berechnung der Entfernungskilometer
 				 */
-				
 				openURL("http://maps.google.de/maps?hl=de&tab=wl");
 			}
 		});
@@ -204,8 +260,6 @@ public class AdressBildschirm extends JFrame {
 	 * 
 	 * Methode zur Oeffnung des Browsers 
 	 */
-	
-	
 		public void openURL(String url) {
 		String osName = System.getProperty("os.name");
 		
